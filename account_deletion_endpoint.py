@@ -1,9 +1,6 @@
 from flask import Flask, request, jsonify
 import hashlib
 import os
-from dotenv import load_dotenv
-
-load_dotenv()  
 
 app = Flask(__name__)
 
@@ -16,6 +13,7 @@ def handle_account_deletion():
         challenge_code = request.args.get("challenge_code")
         if not challenge_code:
             return jsonify({"error": "Missing challenge_code"}), 400
+
         to_hash = challenge_code + VERIFICATION_TOKEN + ENDPOINT_URL
         hashed = hashlib.sha256(to_hash.encode("utf-8")).hexdigest()
         return jsonify({"challengeResponse": hashed}), 200
