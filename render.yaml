@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: ebay-account-deletion
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: "python account_deletion_endpoint.py"
