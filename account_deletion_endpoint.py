@@ -25,6 +25,11 @@ def handle_account_deletion():
     print("✅ Received account deletion:", data)
     return jsonify({"status": "success"}), 200
 
+@app.route("/")
+def home():
+    return "✅ TCGTrack backend is running. Nothing to see here."
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
